@@ -54,7 +54,6 @@ resource "aws_ecs_service" "this" {
   task_definition = "${aws_ecs_task_definition.this.arn}"
   desired_count   = "2"
   launch_type     = "EC2"
-  propagate_tags  = "SERVICE"
   tags            = "${var.tags}"
 
   load_balancer {
