@@ -1,6 +1,6 @@
 module "target" {
   source          = "StayWell/alb-target/aws"
-  version         = "0.1.0"
+  version         = "0.1.1"
   env             = "${var.env}"
   tags            = "${var.tags}"
   vpc_id          = "${var.vpc_id}"
@@ -11,6 +11,7 @@ module "target" {
   port            = "${var.container_port}"
   domain          = "${var.domain}"
   route53_zone_id = "${var.route53_zone_id}"
+  matcher         = "${var.matcher}"
 }
 
 data "template_file" "this" {
