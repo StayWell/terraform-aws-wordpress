@@ -28,6 +28,7 @@ data "template_file" "this" {
       jsonencode(
         concat(
           list(
+            map("name", "WORDPRESS_DB_NAME", "value", "${var.name}"),
             map("name", "WORDPRESS_DB_HOST", "value", "${var.db_host}"),
             map("name", "WORDPRESS_DB_USER", "value", "${var.db_user}"),
             map("name", "WORDPRESS_DB_PASSWORD", "value", "${var.db_password}")
@@ -52,7 +53,7 @@ resource "aws_ecs_service" "this" {
   name            = "${var.name}"
   cluster         = "${var.cluster_id}"
   task_definition = "${aws_ecs_task_definition.this.arn}"
-  desired_count   = "2"
+  desired_count   = "${var.desired_count}"
   launch_type     = "EC2"
 
   load_balancer {
