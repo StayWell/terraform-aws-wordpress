@@ -8,6 +8,7 @@ module "target" {
   lb_dns_name     = "${var.lb_dns_name}"
   lb_zone_id      = "${var.lb_zone_id}"
   host            = "${var.name}"
+  port            = "${var.container_port}"
   domain          = "${var.domain}"
   route53_zone_id = "${var.route53_zone_id}"
 }
