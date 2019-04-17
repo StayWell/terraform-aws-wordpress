@@ -49,7 +49,7 @@ resource "aws_ecs_task_definition" "this" {
 
 resource "aws_ecs_service" "this" {
   name            = "${var.name}"
-  cluster         = "${module.ecs.cluster_id}"
+  cluster         = "${var.cluster_id}"
   task_definition = "${aws_ecs_task_definition.this.arn}"
   desired_count   = "2"
   launch_type     = "EC2"
@@ -57,7 +57,7 @@ resource "aws_ecs_service" "this" {
   tags            = "${var.tags}"
 
   load_balancer {
-    target_group_arn = "${aws_lb_target_group.metabase.id}"
+    target_group_arn = "${module.target.target_group_arn}"
     container_name   = "${var.name}"
     container_port   = "${var.container_port}"
   }
