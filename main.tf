@@ -28,6 +28,7 @@ data "template_file" "this" {
       jsonencode(
         concat(
           list(
+            map("name", "HTTP_X_FORWARDED_PROTO", "value", "https"),
             map("name", "WORDPRESS_DB_NAME", "value", "${var.name}"),
             map("name", "WORDPRESS_DB_HOST", "value", "${var.db_host}"),
             map("name", "WORDPRESS_DB_USER", "value", "${var.db_user}"),
