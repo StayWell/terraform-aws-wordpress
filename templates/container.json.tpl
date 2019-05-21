@@ -2,10 +2,11 @@
   {
     "name": "${name}",
     "image": "${image}",
-    "MountPoints": [
+    "mountPoints": [
       {
-        "ContainerPath": "/var/www/html",
-        "SourceVolume": "wordpress-data"
+        "readOnly": null,
+        "containerPath": "/var/www/html",
+        "sourceVolume": "wordpress-data"
       }
     ],
     "essential": true,
@@ -23,6 +24,6 @@
         "awslogs-stream-prefix": "ecs"
       }
     },
-    "environment": "${env_vars}"
+    "environment": ${env_vars}
   }
 ]
