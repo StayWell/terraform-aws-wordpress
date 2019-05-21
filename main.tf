@@ -15,7 +15,7 @@ module "target" {
 }
 
 data "template_file" "this" {
-  template = "${file("${path.module}/container.json.tpl")}"
+  template = "${file("${path.module}/templates/container.json.tpl")}"
 
   vars {
     name      = "${var.name}"
@@ -49,6 +49,11 @@ resource "aws_ecs_task_definition" "this" {
   cpu                      = "${var.cpu}"
   memory                   = "${var.memory}"
   tags                     = "${var.tags}"
+
+  volume {
+    name      = "wordpress-data"
+    host_path = "${var.wp_data_host_path}"
+  }
 }
 
 resource "aws_ecs_service" "this" {

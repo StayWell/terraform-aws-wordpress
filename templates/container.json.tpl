@@ -2,11 +2,17 @@
   {
     "name": "${name}",
     "image": "${image}",
+    "MountPoints": [
+      {
+        "ContainerPath": "/var/www/html",
+        "SourceVolume": "wordpress-data"
+      }
+    ],
     "essential": true,
     "portMappings": [
       {
         "protocol": "tcp",
-        "containerPort": ${port}
+        "containerPort": "${port}"
       }
     ],
     "logConfiguration": {
@@ -17,6 +23,6 @@
         "awslogs-stream-prefix": "ecs"
       }
     },
-    "environment": ${env_vars}
+    "environment": "${env_vars}"
   }
 ]

@@ -97,3 +97,8 @@ variable "matcher" {
   description = "(optional) https://www.terraform.io/docs/providers/aws/r/lb_target_group.html#matcher"
   default     = "200,300-399"
 }
+
+variable "wp_data_host_path" {
+  description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#host_path"
+  default     = "/mnt/efs"
+}
