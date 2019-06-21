@@ -7,6 +7,11 @@
         "readOnly": null,
         "containerPath": "/var/www/html",
         "sourceVolume": "wordpress-data"
+      },
+      {
+        "readOnly": null,
+        "ContainerPath": "/var/www/html/.htaccess",
+        "SourceVolume": "htaccess"
       }
     ],
     "essential": true,
