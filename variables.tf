@@ -106,6 +106,6 @@ variable "wp_data_host_path" {
 
 variable "htaccess_host_path" {
   description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#host_path"
-  default     = "/mnt/efs/wordpress/.htaccess"
+  default     = "/mnt/efs/.htaccess"
 }
 
