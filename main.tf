@@ -60,10 +60,7 @@ resource "aws_ecs_task_definition" "this" {
     host_path = "${var.htaccess_host_path}"
   }
 
-    volume {
-    name      = "wordpress-php-ini"
-    host_path = "${var.wp_php_ini_path}"
-  }
+
 }
 
 

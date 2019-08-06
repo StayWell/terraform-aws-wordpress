@@ -108,9 +108,6 @@ variable "htaccess_host_path" {
   description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#host_path"
   default     = "/mnt/efs/.htaccess"
 }
-variable "wp_php_ini_path" {
-  description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#host_path"
-  default     = "/mnt/efs/php.ini"
-}
+
 
 
