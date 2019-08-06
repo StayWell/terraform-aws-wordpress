@@ -46,8 +46,8 @@ resource "aws_ecs_task_definition" "this" {
   network_mode             = "bridge"
   requires_compatibilities = ["EC2"]
   container_definitions    = "${data.template_file.this.rendered}"
-  #cpu                      = "${var.cpu}"
-  #memory                   = "${var.memory}"
+  cpu                      = "${var.cpu}"
+  memory                   = "${var.memory}"
   tags                     = "${var.tags}"
 
   volume {
