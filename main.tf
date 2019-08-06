@@ -46,8 +46,8 @@ resource "aws_ecs_task_definition" "this" {
   network_mode             = "bridge"
   requires_compatibilities = ["EC2"]
   container_definitions    = "${data.template_file.this.rendered}"
-  cpu                      = "${var.cpu}"
-  memory                   = "${var.memory}"
+  #cpu                      = "${var.cpu}"
+  #memory                   = "${var.memory}"
   tags                     = "${var.tags}"
 
   volume {
@@ -59,7 +59,15 @@ resource "aws_ecs_task_definition" "this" {
     name      = "htaccess"
     host_path = "${var.htaccess_host_path}"
   }
+
+    volume {
+    name      = "wordpress-php-ini"
+    host_path = "${var.wp_php_ini_path}"
+  }
 }
+
+
+
 
 resource "aws_ecs_service" "this" {
   name            = "${var.name}"

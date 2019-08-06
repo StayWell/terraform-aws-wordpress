@@ -58,15 +58,15 @@ variable "desired_count" {
   default     = "1"
 }
 
-variable "cpu" {
-  description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#cpu"
-  default     = "256"
-}
+# variable "cpu" {
+#   description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#cpu"
+#   #default     = "256"
+# }
 
-variable "memory" {
-  description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#memory"
-  default     = "256"
-}
+# variable "memory" {
+#   description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#memory"
+#   #default     = "256"
+# }
 
 variable "db_host" {
   description = "(required) https://hub.docker.com/_/wordpress/ - search WORDPRESS_DB_HOST"
@@ -108,4 +108,9 @@ variable "htaccess_host_path" {
   description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#host_path"
   default     = "/mnt/efs/.htaccess"
 }
+variable "wp_php_ini_path" {
+  description = "(optional) https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#host_path"
+  default     = "/mnt/efs/php.ini"
+}
+
 
