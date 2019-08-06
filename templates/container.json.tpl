@@ -12,12 +12,7 @@
         "readOnly": null,
         "ContainerPath": "/var/www/html/.htaccess",
         "SourceVolume": "htaccess"
-      },
-      {
-        "readOnly": null,
-        "ContainerPath": "/usr/local/etc/php",
-        "SourceVolume": "wordpress-php-ini"
-      },
+      }
     ],
     "essential": true,
     "portMappings": [
