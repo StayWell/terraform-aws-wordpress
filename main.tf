@@ -54,17 +54,13 @@ resource "aws_ecs_task_definition" "this" {
     name      = "wordpress-data"
     host_path = "${var.wp_data_host_path}"
   }
+
   #Host path for temp storage of htaccess so Docker can mount this and use
   volume {
     name      = "htaccess"
     host_path = "${var.htaccess_host_path}"
   }
-
-
 }
-
-
-
 
 resource "aws_ecs_service" "this" {
   name            = "${var.name}"
@@ -94,5 +90,10 @@ resource "aws_lb_target_group" "this" {
 
   health_check {
     path = "/"
+  }
+
+  stickiness {
+    type    = "lb_cookie"
+    enabled = true
   }
 }
