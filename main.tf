@@ -51,14 +51,8 @@ resource "aws_ecs_task_definition" "this" {
   tags                     = "${var.tags}"
 
   volume {
-    name      = "wordpress-data"
+    name      = "wp-content"
     host_path = "${var.wp_data_host_path}"
-  }
-
-  #Host path for temp storage of htaccess so Docker can mount this and use
-  volume {
-    name      = "htaccess"
-    host_path = "${var.htaccess_host_path}"
   }
 }
 

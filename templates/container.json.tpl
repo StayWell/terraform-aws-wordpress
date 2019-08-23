@@ -5,13 +5,8 @@
     "mountPoints": [
       {
         "readOnly": null,
-        "containerPath": "/var/www/html",
-        "sourceVolume": "wordpress-data"
-      },
-      {
-        "readOnly": null,
-        "ContainerPath": "/var/www/html/.htaccess",
-        "SourceVolume": "htaccess"
+        "containerPath": "/var/www/html/wp-content",
+        "sourceVolume": "wp-content"
       }
     ],
     "essential": true,
