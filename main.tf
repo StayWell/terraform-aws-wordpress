@@ -34,7 +34,7 @@ data "template_file" "this" {
             map("name", "WORDPRESS_DB_HOST", "value", "${var.db_host}"),
             map("name", "WORDPRESS_DB_USER", "value", "${var.db_user}"),
             map("name", "WORDPRESS_DB_PASSWORD", "value", "${var.db_password}"),
-            map("name", "WORDPRESS_DB_PASSWORD", "value", "define( 'WP_AUTO_UPDATE_CORE', false );"),
+            map("name", "WORDPRESS_CONFIG_EXTRA", "value", "define( 'WP_AUTO_UPDATE_CORE', false );"),
             map("name", "WORDPRESS_CONFIG_EXTRA", "value", "define('WP_ALLOW_MULTISITE', true );")
           )
         )
