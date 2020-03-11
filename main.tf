@@ -1,17 +1,18 @@
 module "target" {
-  source          = "StayWell/alb-target/aws"
-  version         = "0.1.1"
-  env             = "${var.env}"
-  tags            = "${var.tags}"
-  vpc_id          = "${var.vpc_id}"
-  listener_arn    = "${var.listener_arn}"
-  lb_dns_name     = "${var.lb_dns_name}"
-  lb_zone_id      = "${var.lb_zone_id}"
-  host            = "${var.name}"
-  port            = "${var.container_port}"
-  domain          = "${var.domain}"
-  route53_zone_id = "${var.route53_zone_id}"
-  matcher         = "${var.matcher}"
+  source            = "StayWell/alb-target/aws"
+  version           = "0.1.1"
+  env               = "${var.env}"
+  tags              = "${var.tags}"
+  vpc_id            = "${var.vpc_id}"
+  listener_arn      = "${var.listener_arn}"
+  lb_dns_name       = "${var.lb_dns_name}"
+  lb_zone_id        = "${var.lb_zone_id}"
+  host              = "${var.name}"
+  port              = "${var.container_port}"
+  domain            = "${var.domain}"
+  route53_zone_id   = "${var.route53_zone_id}"
+  matcher           = "${var.matcher}"
+  health_check_path = "/wp-admin"
 }
 
 data "template_file" "this" {
@@ -59,11 +60,12 @@ resource "aws_ecs_task_definition" "this" {
 }
 
 resource "aws_ecs_service" "this" {
-  name            = "${var.name}"
-  cluster         = "${var.cluster_id}"
-  task_definition = "${aws_ecs_task_definition.this.arn}"
-  desired_count   = "${var.desired_count}"
-  launch_type     = "EC2"
+  name                              = "${var.name}"
+  cluster                           = "${var.cluster_id}"
+  task_definition                   = "${aws_ecs_task_definition.this.arn}"
+  desired_count                     = "${var.desired_count}"
+  launch_type                       = "EC2"
+  health_check_grace_period_seconds = "300"
 
   load_balancer {
     target_group_arn = "${module.target.target_group_arn}"
