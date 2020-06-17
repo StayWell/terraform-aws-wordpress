@@ -89,8 +89,8 @@ resource "aws_lb_target_group" "this" {
   health_check {
     path                = "/"
     unhealthy_threshold = 5
-    interval            = 120
-    timeout             = 120
+    interval            = 240
+    timeout             = 60
   }
 
   stickiness {
